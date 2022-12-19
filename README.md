@@ -31,8 +31,8 @@
 # Create Database and user(login to mysql server)
  
     1. sudo mysql
-    2. CREATE DATABASE ms_managment;
-    3. CREATE USER 'user'@'%' IDENTIFIED WITH mysql_native_password BY 'user';
+    2. CREATE DATABASE school_managment_new;
+    3. CREATE USER 'school_user'@'%' IDENTIFIED WITH mysql_native_password BY 'school_user';
     5. GRANT ALL ON school_managment_new.* TO 'school_user'@'%';
     6. FLUSH PRIVILEGES;
 
