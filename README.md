@@ -13,14 +13,20 @@
 # Install mysql:
  1. ```sudo apt install mysql-server```
 
-# PHP and composer install:
+# PHP 8.0 fpm install:
  1. ```sudo apt install php8.0-fpm php8.0-mysql```  
  2. ```sudo apt install php8.0-mbstring php8.0-xml php8.0-bcmath php8.0-simplexml php8.0-intl php8.0-mbstring php8.0-gd php8.0-curl php8.0-zip ```
- 3. ```php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"``` 
- 4. ```php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"``` 
-5. ```php composer-setup.php``` 
-6. ```php -r "unlink('composer-setup.php');"``` 
-7. ```sudo mv composer.phar /usr/bin/composer``` 
+ 
+# PHP 7.4 fpm install:
+ 1. ```sudo apt install php7.4-fpm php7.4-mysql```  
+ 2. ```sudo apt install php7.4-mbstring php7.4-xml php7.4-bcmath php7.4-simplexml php7.4-intl php7.4-mbstring php7.4-gd php7.4-curl php7.4-zip ```
+
+# composer install:
+ 1. ```php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"``` 
+ 2. ```php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"``` 
+3. ```php composer-setup.php``` 
+4. ```php -r "unlink('composer-setup.php');"``` 
+5. ```sudo mv composer.phar /usr/bin/composer``` 
 
 # Create Database and user(login to mysql server)
  
@@ -30,18 +36,9 @@
     5. GRANT ALL ON school_managment_new.* TO 'school_user'@'%';
     6. FLUSH PRIVILEGES;
 
-# Setting Up Nginx
-
- 1. ```sudo ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled/```
-
-# Set permission
-
- 1. ```sudo chown -R www-data.www-data /var/www/project/storage```
- 2. ```sudo chown -R www-data.www-data /var/www/project/bootstrap/cache```
-
 # Edit example sites-available file 
 
- ```sudo nano /etc/nginx/sites-available/example```
+ ```sudo vim /etc/nginx/sites-available/example```
 
 # Ninx file configure:
 ```
@@ -80,8 +77,16 @@ server {
 }
 ```
 
+# Setting Up Nginx
+
+ 1. ```sudo ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled/```
+
 # check nginx have any error and reload
   1. ```sudo nginx -t```
   2. ```sudo systemctl reload nginx```
   
   
+# Set permission
+
+ 1. ```sudo chown -R www-data.www-data /var/www/project/storage```
+ 2. ```sudo chown -R www-data.www-data /var/www/project/bootstrap/cache```
